@@ -1,6 +1,7 @@
 import datetime
 
 path_to_logfile = '/Users/curried/documents/projects/learning-logs/logfile.txt'
+path_to_log_repo = '/Users/curried/documents/projects/learning-logs/.git'
 
 tag_separator = '#'
 field_separator = ';'

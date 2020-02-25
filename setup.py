@@ -7,6 +7,9 @@ parser.add_argument(
 parser.add_argument(
     '--all', help='Review all logs', action='store_true')
 
+parser.add_argument(
+    '--sync', help='Sync local logs with remote logfile', action='store_true')
+
 parser.add_argument('--tags', help='Show logs with a specific tag')
 
 args = parser.parse_args()
