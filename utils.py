@@ -23,13 +23,16 @@ def add_log():
 def parse_log(strlog):
     log = {}
     for piece in strlog.split(config.field_separator):
-        [k, v] = piece.split(':')
-        if(k == 'tags'):
-            tags = v.split(',')
-            v = []
-            for tag in tags:
-                v.append(tag.strip())
-        log[k] = v
+        try:
+            [k, v] = piece.split(':')
+            if(k == 'tags'):
+                tags = v.split(',')
+                v = []
+                for tag in tags:
+                    v.append(tag.strip())
+            log[k] = v
+        except:
+            continue
     return log
 
 
@@ -49,15 +52,21 @@ def log_is_newer_than_date(log, date):
 
 def print_logs(logs):
     for log in logs:
-        print(log['log'])
+        try:
+            print(log['log'])
+        except:
+            pass
 
 
 def filter_by_tags(tag):
     def f(logs):
         output = []
         for log in logs:
-            if tag in log['tags']:
-                output.append(log)
+            try:
+                if tag in log['tags']:
+                    output.append(log)
+            except:
+                continue
         return output
     return f
 
