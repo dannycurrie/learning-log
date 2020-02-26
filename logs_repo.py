@@ -9,7 +9,7 @@ def sync_local_logfile():
     try:
         print(repo.git.pull('origin'))
     except:
-        print('Unable to sync')
+        print('Unable to sync local logfile')
 
 
 def commit_local_logfile():
@@ -19,7 +19,7 @@ def commit_local_logfile():
 
 def sync_remote_logfile():
     try:
-        origin = repo.remote(name='origin')
-        print(origin.push())
+        repo.git.push('origin')
+        print('Sync complete')
     except:
-        print('Unable to sync remote logs')
+        print('Unable to sync remote logfile')
