@@ -23,16 +23,13 @@ def add_log():
 def parse_log(strlog):
     log = {}
     for piece in strlog.split(config.field_separator):
-        try:
-            [k, v] = piece.split(':')
-            if(k == 'tags'):
-                tags = v.split(',')
-                v = []
-                for tag in tags:
-                    v.append(tag.strip())
-            log[k] = v
-        except:
-            continue
+        [k, v] = piece.split(':')
+        if(k == 'tags'):
+            tags = v.split(',')
+            v = []
+            for tag in tags:
+                v.append(tag.strip())
+        log[k] = v
     return log
 
 
@@ -41,8 +38,11 @@ def parse_logs(file):
     output = []
     for line in line_list:
         if(line != ''):
-            log = parse_log(line)
-            output.append(log)
+            try:
+                log = parse_log(line)
+                output.append(log)
+            except:
+                continue
     return output
 
 
@@ -55,7 +55,7 @@ def print_logs(logs):
         try:
             print(log['log'])
         except:
-            pass
+            continue
 
 
 def filter_by_tags(tag):

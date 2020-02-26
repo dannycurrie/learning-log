@@ -5,7 +5,6 @@ path_to_log_repo = '/Users/curried/documents/projects/learning-logs/.git'
 
 tag_separator = '#'
 field_separator = ';'
-
 date_fmt = '%xS'
 
 today = datetime.datetime.today()
