@@ -22,4 +22,3 @@ elif args.sync:
 else:
     utils.add_log()
     logfile.commit_local_logfile()
-    utils.display_logs()

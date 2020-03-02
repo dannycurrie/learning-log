@@ -14,7 +14,8 @@ def sync_local_logfile():
 
 def commit_local_logfile():
     repo.git.add(update=True)
-    repo.index.commit(f'learning logs updated {datetime.datetime.now()}')
+    print(repo.index.commit(
+        f'learning logs updated {datetime.datetime.now()}'))
 
 
 def sync_remote_logfile():
