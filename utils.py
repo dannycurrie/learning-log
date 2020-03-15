@@ -46,10 +46,6 @@ def parse_logs(file):
     return output
 
 
-def log_is_newer_than_date(log, date):
-    return datetime.datetime.strptime(log['date'], config.date_fmt) > date
-
-
 def print_logs(logs):
     for log in logs:
         try:
@@ -71,13 +67,19 @@ def filter_by_tags(tag):
     return f
 
 
+def log_is_newer_than_date(date):
+    def f(log):
+        try:
+            return datetime.datetime.strptime(log['date'], config.date_fmt) >= date
+        except:
+            return False
+    return f
+
+
 def filter_by_date(date):
     def f(logs):
-        output = []
-        for log in logs:
-            if(log_is_newer_than_date, date):
-                output.append(log)
-        return output
+        filter_fn = log_is_newer_than_date(date)
+        return list(filter(filter_fn, logs))
     return f
 
 
