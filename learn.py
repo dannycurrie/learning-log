@@ -9,7 +9,10 @@ args = setup.args
 
 logfile.sync_local_logfile()
 
-if args.thisweek:
+if args.today:
+    filter_today = utils.filter_by_date(config.today)
+    utils.display_logs(filter_today, 'All logs from today: ')
+elif args.thisweek:
     filter_this_week = utils.filter_by_date(config.beginning_of_week)
     utils.display_logs(filter_this_week, 'All logs from this week: ')
 elif args.tags:
