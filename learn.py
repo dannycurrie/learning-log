@@ -3,6 +3,7 @@ import datetime
 import setup
 import config
 import utils
+import create_weekly_digest
 import logs_repo as logfile
 
 args = setup.args
@@ -22,6 +23,8 @@ elif args.all:
     utils.display_logs(utils.return_all, 'All logs:')
 elif args.sync:
     logfile.sync_remote_logfile()
+elif args.digest:
+    create_weekly_digest.create()
 else:
     utils.add_log()
     logfile.commit_local_logfile()

@@ -3,6 +3,11 @@ import datetime
 path_to_logfile = '/Users/dannycurrie/Documents/code projects/learning/learning_log_db/logfile.txt'
 path_to_log_repo = '/Users/dannycurrie/Documents/code projects/learning/learning_log_db/.git'
 
+ADDR = 'ADDR'
+PWD = 'PWD'
+HOST = 'smtp.gmail.com'
+PORT = 587
+
 tag_separator = '#'
 field_separator = ';'
 date_fmt = '%xS'

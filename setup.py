@@ -18,6 +18,10 @@ parser.add_argument(
     '--sync', help='Sync local logs with remote logfile', action='store_true'
 )
 
+parser.add_argument(
+    '--digest', help='Show a weekly digest', action='store_true'
+)
+
 parser.add_argument('--tags', help='Show logs with a specific tag')
 
 args = parser.parse_args()

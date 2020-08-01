@@ -94,3 +94,17 @@ def display_logs(filter_fn=return_all, msg=''):
     filtered_logs = filter_fn(logs)
     print_logs(filtered_logs)
     f.close()
+
+
+def extract_sorted_tags(logs):
+    freqMap = {}
+    for log in logs:
+        for tag in log['tags']:
+            if tag in freqMap:
+                freqMap[tag] += 1
+            else:
+                freqMap[tag] = 1
+    output = []
+    for t in sorted(freqMap, key=freqMap.get, reverse=True):
+        output.append(t)
+    return output
