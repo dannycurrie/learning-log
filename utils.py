@@ -23,7 +23,9 @@ def add_log():
 def parse_log(strlog):
     log = {}
     for piece in strlog.split(config.field_separator):
-        [k, v] = piece.split(':')
+        [k, *v] = piece.split(':')
+        # gather any pieces separated by :
+        v = ''.join(v)
         if(k == 'tags'):
             tags = v.split(',')
             v = []
@@ -42,6 +44,7 @@ def parse_logs(file):
                 log = parse_log(line)
                 output.append(log)
             except:
+                print('failed to parse', line)
                 continue
     return output
 
