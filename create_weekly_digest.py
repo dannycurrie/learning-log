@@ -25,15 +25,10 @@ def create():
         tags_to_logs[tag] = utils.filter_by_tags(tag)(logs)
 
     # write groups to email
-    msg = f"""\
-      Subject: Learning Log Digest
-      To: danny.currie42@gmail.com
-      From: danny.currie42@gmail.com
-      """
+    msg = []
 
     for tag in tags_to_logs.keys():
-        msg = addLine(msg, '')
-        msg = addLine(msg, tag)
+        msg.append('Tag: ' + tag)
         for log in tags_to_logs[tag]:
-            msg = addLine(msg, log['log'])
+            msg.append(log['log'])
     send_mail.sendMail(msg)
